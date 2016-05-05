@@ -99,36 +99,8 @@
 		<br>
 	</div><!-- container -->
 
-
-	<!-- PORTFOLIO SECTION -->
-	<div id="dg">
-		<div class="container">
-			<div class="row centered">
-				<h4>LATEST WORKS</h4>
-				<br>
-				<div class="col-lg-4">
-					<div class="tilt">
-					<a href="#"><img src="assets/img/p01.png" alt=""></a>
-					</div>
-				</div>
-
-				<div class="col-lg-4">
-					<div class="tilt">
-					<a href="#"><img src="assets/img/p03.png" alt=""></a>
-					</div>
-				</div>
-
-				<div class="col-lg-4">
-					<div class="tilt">
-					<a href="#"><img src="assets/img/p02.png" alt=""></a>
-					</div>
-				</div>
-			</div><!-- row -->
-		</div><!-- container -->
-	</div><!-- DG -->
-
-
 	<!-- FEATURE SECTION -->
+		<div id="dg">
 	<div class="container wb">
 		<div class="row centered">
 			<br><br>
@@ -143,31 +115,7 @@
 			</div>
 		</div><!-- row -->
 	</div><!-- container -->
-
-
-	<div id="lg">
-		<div class="container">
-			<div class="row centered">
-				<h4>OUR AWESOME CLIENTS</h4>
-				<div class="col-lg-2 col-lg-offset-1">
-					<img src="assets/img/c01.gif" alt="">
-				</div>
-				<div class="col-lg-2">
-					<img src="assets/img/c02.gif" alt="">
-				</div>
-				<div class="col-lg-2">
-					<img src="assets/img/c03.gif" alt="">
-				</div>
-				<div class="col-lg-2">
-					<img src="assets/img/c04.gif" alt="">
-				</div>
-				<div class="col-lg-2">
-					<img src="assets/img/c05.gif" alt="">
-				</div>
-			</div><!-- row -->
-		</div><!-- container -->
-	</div><!-- dg -->
-	
+		</div><!-- DG -->
 	
 	<div id="r">
 		<div class="container">
