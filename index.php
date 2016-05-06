@@ -52,7 +52,12 @@
               $res = mysql_query($sql);
               while($row = mysql_fetch_array($res))
                 {
-                  echo '<li><a href="'.$row["href"].'">';
+                  if ($row["href"]=='index'){
+                      $endHref='index';
+                  } else {
+                      $endHref='article?='.$row["href"];
+                  }
+                  echo '<li><a href="'.$endHref.'">';
                   echo $row['name'];
                 echo '</a></li>';
                 }

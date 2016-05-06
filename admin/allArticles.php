@@ -80,21 +80,14 @@
                 </div>
             </div>
             <div class="container-fluid">
-              <form method="POST" id="submitThis" action="javascript:void(null);" onsubmit="call()">
-                   <div class="form-group">
-                      <label for="title_f"><strong>Заговолок:</strong></label>
-                      <input type="text" required class="form-control" maxlength="64" id="title_f" name="title">
-                    </div>
-                    <div class="form-group">
-                      <label for="shortText_f"><strong>Краткое описание:</strong></label>
-                      <textarea name="shortText" class="form-control" maxlength="128" rows="3" id="shortText_f"></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="mainText_f"><strong>Полное описание:</strong></label>
-                      <textarea name="mainText" class="form-control" maxlength="2056" required rows="10" id="mainText_f"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-lg btn-primary-outline btn-block"><i class="fa fa-dot-circle-o"></i> Добавить</button>
-              </form>
+                <table class="table table-hover">
+                   <thead>
+                       <tr>
+                           <td><strong>Заголовок</strong></td>
+                       </tr>
+                   </thead>
+                   <tr><td>Тут</td></tr>
+                </table>
             </div>
         </main>
         <footer class="footer container-fluid">
@@ -112,24 +105,6 @@
         <script src="assets/js/app.js"></script>
         <script src="assets/js/libs/toastr.min.js"></script>
         <script src="assets/js/libs/jquery.form.min.js"></script>
-        <script>
-            toastr.options.closeButton = true;
-            function call() {
-              var msg   = $('#submitThis').serialize();
-                $.ajax({
-                  type: 'POST',
-                  url: 'newArticle_db.php',
-                  data: msg,
-                  success: function(data) {
-                    toastr.success('Статья успешно добавлена!', 'Отлично!');
-                  },
-                  error:  function(xhr, str){
-                    toastr.error('Статья не добавлена=(', 'Ошибочка('+xhr.responseCode+')');
-                  }
-                });
-
-            }
-        </script>
         
     </body>
 </html>

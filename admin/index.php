@@ -27,7 +27,7 @@
         <header class="navbar">
             <div class="container-fluid">
                 <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
-                <a class="navbar-brand" href="#"></a>
+                <a class="navbar-brand" href="index"></a>
                 <ul class="nav navbar-nav pull-right hidden-md-down">
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
@@ -55,9 +55,27 @@
                     <li class="nav-title">
                         Панель управления
                     </li>
-                    <li class="divider"></li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="newArticle.php"><i class="icon-docs"></i> Статьи <span class="label label-danger">NEW</span></a>
+                   <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Плагины</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="icons/font-awesome.html"><i class="icon-star"></i> Галерея</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="icons/simple-line-icons.html"><i class="icon-star"></i> Т.д. и т.п</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Статьи</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="newArticle"><i class="fa fa-plus-square" aria-hidden="true"></i> Добавить</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="allArticles"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Редактировать</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="forms.html"><i class="icon-options-vertical"></i> Меню <span class="label label-info">NEW</span></a>
