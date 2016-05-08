@@ -1,3 +1,4 @@
+<?php include '../db.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -81,21 +82,31 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="h2 page-title">Главная</h1>
+                        <h1 class="h2 page-title">Все пункты меню</h1>
                         <div class="text-muted page-desc">Добро пожаловать в панель управления <strong><?php echo $_SERVER['SERVER_NAME'] ?></strong></div>
                     </div>
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="col-md-4 bg-success center">
-                 <strong>Добавить статью</strong>
-                </div>
-                <div class="col-md-4 bg-primary">
-                    qweqweqwe
-                </div>
-                <div class="col-md-4 bg-warning">
-                    qweqweqsdasd
-                </div>
+                <table class="table table-hover">
+                   <thead>
+                       <tr>
+                          <td><strong>Номер</strong></td>
+                           <td><strong>Заголовок</strong></td>
+                       </tr>
+                   </thead>
+                    <?php 
+                        $sql = 'SELECT * FROM `mainmenu`';
+                        $query = mysql_query($sql);
+                        while($row = mysql_fetch_array($query))
+                            {
+                                echo '<tr>';
+                                echo '<td>'.$row['href'].'</td>';
+                                echo '<td><a href="editMenuItem?href='.$row["href"].'">'.$row['name'].'</a></td>';
+                                echo '</tr>';
+                            }
+                    ?>
+                </table>
             </div>
         </main>
         <footer class="footer">

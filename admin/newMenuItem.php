@@ -1,9 +1,10 @@
+<?php include '../db.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
-        <title>Админка</title>
+        <title>Добавить пункт меню</title>
         <!-- Main styles for this application -->
         <link href="assets/css/style.css" rel="stylesheet">
     </head>
@@ -81,38 +82,69 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="h2 page-title">Главная</h1>
+                        <h1 class="h2 page-title">Новый пункт меню</h1>
                         <div class="text-muted page-desc">Добро пожаловать в панель управления <strong><?php echo $_SERVER['SERVER_NAME'] ?></strong></div>
                     </div>
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="col-md-4 bg-success center">
-                 <strong>Добавить статью</strong>
-                </div>
-                <div class="col-md-4 bg-primary">
-                    qweqweqwe
-                </div>
-                <div class="col-md-4 bg-warning">
-                    qweqweqsdasd
-                </div>
+              <form method="POST" id="submitThis" action="javascript:void(null);" onsubmit="call()">
+                   <div class="form-group">
+                     <label><strong>Привязка к статье:</strong></label>
+                      <select multiple class="form-control" name="href">
+                            <?php 
+                                $sql = "SELECT * FROM `articles`";
+                                $result = mysql_query($sql);
+                            while($row=mysql_fetch_array($result)){
+                                echo '<option>';
+                                echo $row['title']."/".$row['id'];
+                                echo '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="name_f"><strong>Название:</strong></label>
+                      <input type="text" required class="form-control" maxlength="64" id="name_f" name="name">
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary-outline btn-block"><i class="fa fa-dot-circle-o"></i> Добавить</button>
+              </form>
             </div>
         </main>
-        <footer class="footer">
+        <footer class="footer container-fluid">
             <span class="text-left">
-                Копирайты тут
+                <a href="mailto:ankell.game@gmail.com"><i class="fa fa-question" aria-hidden="true"></i> Сообщить об ошибке</a>
+            </span>
+            <span class="pull-right">
+                <strong>@Chank1e</strong>
             </span>
         </footer>
-        <!-- Bootstrap and necessary plugins -->
-        <script src="assets/js/libs/jquery.min.js"></script>
+         <!-- Bootstrap and necessary plugins -->
+                        <script src="assets/js/libs/jquery.min.js"></script>
         <script src="assets/js/libs/bootstrap.min.js"></script>
         <script src="assets/js/libs/pace.min.js"></script>
-        <!-- Plugins and scripts required by all views -->
-        <!-- GenesisUI main scripts -->
         <script src="assets/js/app.js"></script>
-        <!-- Plugins and scripts required by this views -->
         <script src="assets/js/libs/toastr.min.js"></script>
-        
+        <script src="assets/js/libs/jquery.form.min.js"></script>
+        <script>
+            toastr.options.closeButton = true;
+            function call() {
+              var msg   = $('#submitThis').serialize();
+                $.ajax({
+                  type: 'POST',
+                  url: 'newMenuItem_db.php',
+                  data: msg,
+                  success: function(data) {
+                    toastr.success('Пункт меню успешно добавлен!', 'Отлично!');
+                      window.location.href="menuItems";
+                  },
+                  error:  function(xhr, str){
+                    toastr.error('Пункт меню не добавлен=(', 'Ошибочка('+xhr.responseCode+')');
+                  }
+                });
+
+            }
+        </script>
         
     </body>
 </html>

@@ -55,7 +55,7 @@
                   if ($row["href"]=='index'){
                       $endHref='index';
                   } else {
-                      $endHref='article?='.$row["href"];
+                      $endHref='article?id='.$row["href"];
                   }
                   echo '<li><a href="'.$endHref.'">';
                   echo $row['name'];

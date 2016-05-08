@@ -1,9 +1,10 @@
+<?php include '../db.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
-        <title>Админка</title>
+        <title>Добавить статью</title>
         <!-- Main styles for this application -->
         <link href="assets/css/style.css" rel="stylesheet">
     </head>
@@ -81,38 +82,120 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="h2 page-title">Главная</h1>
+                        <h1 class="h2 page-title">Изменить материал</h1>
                         <div class="text-muted page-desc">Добро пожаловать в панель управления <strong><?php echo $_SERVER['SERVER_NAME'] ?></strong></div>
                     </div>
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="col-md-4 bg-success center">
-                 <strong>Добавить статью</strong>
-                </div>
-                <div class="col-md-4 bg-primary">
-                    qweqweqwe
-                </div>
-                <div class="col-md-4 bg-warning">
-                    qweqweqsdasd
-                </div>
+             
+             <?php 
+                        $idOfArticle = $_GET['id'];
+                        $sql = 'SELECT * FROM `articles` WHERE `id`='.$idOfArticle.'';
+                        $query = mysql_query($sql);
+                        while($row = mysql_fetch_array($query))
+                            {
+                                $mainText =$row['mainText'];
+                                $shortText = $row['shortText'];
+                                $title = $row['title'];
+                            }
+                ?>
+             
+              <form method="POST" id="submitThis" action="javascript:void(null);" onsubmit="callUpdate()">
+                   <div class="form-group">
+                      <label for="title_f"><strong>Заговолок:</strong></label>
+                      <input type="text" required class="form-control" maxlength="64" id="title_f" name="title" value="<?php echo $title; ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="shortText_f"><strong>Краткое описание:</strong></label>
+                      <textarea name="shortText" class="form-control" maxlength="128" rows="3" id="shortText_f"><?php echo $shortText;?></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="mainText_f"><strong>Полное описание:</strong></label>
+                      <textarea name="mainText" class="form-control" maxlength="2056" required rows="10" id="mainText_f"><?php echo $mainText;?></textarea>
+                    </div>
+                    <input type="hidden" name ="id" value="<?php echo $idOfArticle; ?>">
+                        <div class="btn-group btn-group-lg pull-right">
+                            <button type="submit" class="btn btn-primary-outline"><i class="fa fa-dot-circle-o"></i> Сохранить</button>
+                            <button type="button" class="btn btn-danger-outline btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-times" aria-hidden="true"></i> Удалить</button>
+                        </div>
+              </form>
             </div>
         </main>
-        <footer class="footer">
+        <footer class="footer container-fluid">
             <span class="text-left">
-                Копирайты тут
+                <a href="mailto:ankell.game@gmail.com"><i class="fa fa-question" aria-hidden="true"></i> Сообщить об ошибке</a>
+            </span>
+            <span class="pull-right">
+                <strong>@Chank1e</strong>
             </span>
         </footer>
-        <!-- Bootstrap and necessary plugins -->
-        <script src="assets/js/libs/jquery.min.js"></script>
+    
+    <!--FORM FOR DELETE -->
+    <form style="display:none" id="deleteForm">
+        <input type="hidden" value="<?php echo $idOfArticle;?>" name="id">
+    </form>
+    
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Подтвердите действие</h4>
+      </div>
+      <div class="modal-body danger">
+        Вы действительно хотите удалить материал?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
+        <button type="button" class="btn btn-danger" onclick="callDelete()" data-dismiss="modal">Удалить</button>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        
+         <!-- Bootstrap and necessary plugins -->
+                        <script src="assets/js/libs/jquery.min.js"></script>
         <script src="assets/js/libs/bootstrap.min.js"></script>
         <script src="assets/js/libs/pace.min.js"></script>
-        <!-- Plugins and scripts required by all views -->
-        <!-- GenesisUI main scripts -->
         <script src="assets/js/app.js"></script>
-        <!-- Plugins and scripts required by this views -->
         <script src="assets/js/libs/toastr.min.js"></script>
-        
+        <script src="assets/js/libs/jquery.form.min.js"></script>
+        <script>
+            toastr.options.closeButton = true;
+            function callUpdate() {
+              var msg   = $('#submitThis').serialize();
+                $.ajax({
+                  type: 'POST',
+                  url: 'editArticle_db.php',
+                  data: msg,
+                  success: function(data) {
+                    toastr.success('Статья успешно изменена!', 'Отлично!');
+                      window.location.href="allArticles";
+                  },
+                  error:  function(xhr, str){
+                    toastr.error('Статья не изменена=(', 'Ошибочка('+xhr.responseCode+')');
+                  }
+                });
+            }
+            function callDelete() {
+              var msg   = $('#deleteForm').serialize();
+                $.ajax({
+                  type: 'POST',
+                  url: 'deleteArticle_db.php',
+                  data: msg,
+                  success: function(data) {
+                    toastr.success('Статья успешно удалена!', 'Отлично!');
+                      window.location.href="allArticles";
+                  },
+                  error:  function(xhr, str){
+                    toastr.error('Статья не удалена=(', 'Ошибочка('+xhr.responseCode+')');
+                  }
+                });
+            }
+        </script>
         
     </body>
 </html>

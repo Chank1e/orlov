@@ -15,11 +15,11 @@
                 <a class="navbar-brand" href="index"></a>
                 <ul class="nav navbar-nav pull-right hidden-md-down">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+                        <a class="nav-link" href="newArticle"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <img src="assets/img/avatars/6.jpg" class="img-avatar">
+                            <img src="assets/img/avatars/ava.png" class="img-avatar">
                             <span class="hidden-md-down">Администратор</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -62,8 +62,16 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="forms.html"><i class="icon-options-vertical"></i> Меню <span class="label label-info">NEW</span></a>
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-server" aria-hidden="true"></i> Меню</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="newMenuItem"><i class="fa fa-plus-square" aria-hidden="true"></i> Добавить</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="menuItems"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Редактировать</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
@@ -74,7 +82,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="h2 page-title">Главная</h1>
+                        <h1 class="h2 page-title">Новый материал</h1>
                         <div class="text-muted page-desc">Добро пожаловать в панель управления <strong><?php echo $_SERVER['SERVER_NAME'] ?></strong></div>
                     </div>
                 </div>
@@ -122,6 +130,7 @@
                   data: msg,
                   success: function(data) {
                     toastr.success('Статья успешно добавлена!', 'Отлично!');
+                      window.location.href="allArticles";
                   },
                   error:  function(xhr, str){
                     toastr.error('Статья не добавлена=(', 'Ошибочка('+xhr.responseCode+')');
