@@ -22,19 +22,17 @@
                         <div class="card  p-a-2">
                             <div class="card-block">
                                 <h1 class="pull-center">Вход</h1>
-                                <div class="input-group m-b-1">
-                                    <span class="input-group-addon"><i class="icon-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Логин">
-                                </div>
-                                <div class="input-group m-b-2">
-                                    <span class="input-group-addon"><i class="icon-lock"></i></span>
-                                    <input type="password" class="form-control" placeholder="Пароль">
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <button type="button" class="btn btn-primary">Войти</button>
+                                <form method="POST" id="submitThis" action="javascript:void(null);" onsubmit="callUpdate()">
+                                    <div class="input-group m-b-1">
+                                        <span class="input-group-addon"><i class="icon-user"></i></span>
+                                        <input type="text" class="form-control" placeholder="Логин" name="login">
                                     </div>
-                                </div>
+                                    <div class="input-group m-b-2">
+                                        <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                        <input type="password" class="form-control" placeholder="Пароль" name="password">
+                                    </div>
+                                            <button type="submit" class="btn btn-primary">Войти</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -45,7 +43,7 @@
         <script src="assets/js/libs/jquery.min.js"></script>
         <script src="assets/js/libs/tether.min.js"></script>
         <script src="assets/js/libs/bootstrap.min.js"></script>
-        <script>
+        <script>            
         function verticalAlignMiddle()
         {
             var bodyHeight = $(window).height();
@@ -61,6 +59,22 @@
             verticalAlignMiddle();
         });
         $(window).bind('resize', verticalAlignMiddle);
+
+            function callUpdate() {
+              var msg   = $('#submitThis').serialize();
+                $.ajax({
+                  type: 'POST',
+                  url: 'login_db.php',
+                  data: msg,
+                    success:function(data){
+                        if (data==1){
+                            window.location.href="index";
+                        }else {
+                            window.location.href="login";
+                        }
+                    }
+                });
+            }
         </script>
         
         

@@ -49,14 +49,11 @@ if($rowss==0){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#" style="font-family:'Verdana';font-weight:100;">Санаторий <i class="fa fa-circle"></i>рловского</a>
+          <a class="navbar-brand" href="index" style="font-family:'Verdana';font-weight:100;">Санаторий <i class="fa fa-circle"></i>рловского</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right" sytle="font-weight:200;">
-            <!--<li class="active"><a href="index.html">HOME</a></li>
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="services.html">SERVICES</a></li>
-            <li><a href="works.html">WORKS</a></li>-->
+            <li><a href="index">Главная</a></li>
             <?php 
               $sql_menu = "SELECT * FROM `mainmenu`";
               $res_menu = mysql_query($sql_menu);
@@ -67,6 +64,7 @@ if($rowss==0){
                 echo '</a></li>';
                 }
               ?>
+              <li><a href="comments">Отзывы</a></li>
             <li><a data-toggle="modal" data-target="#myModal" href="#myModal">Контакты</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -99,7 +97,7 @@ if($rowss==0){
 	<div id="f">
 		<div class="container">
 			<div class="row centered">
-				<a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-dribbble"></i></a>
+				<a href="#"><i class="fa fa-facebook"></i></a>
 		
 			</div><!-- row -->
 		</div><!-- container -->
@@ -136,6 +134,6 @@ if($rowss==0){
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="admin/assets/js/libs/bootstrap.min.js"></script>
 </body>
 </html>

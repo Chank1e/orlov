@@ -110,3 +110,10 @@ function navigationSmartResize(e) {
         }
 	}
 }
+
+function logout(){
+                $.ajax({
+                  url: 'logout.php'
+                });
+    window.location.href="login";
+}

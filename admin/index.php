@@ -1,10 +1,4 @@
-<!--
-* GenesisUI Bootstrap 4 Admin Template built as framework!
-* Version 1.4.0
-* https://GenesisUI.com
-* Copyright 2016 creativeLabs Łukasz Holeczek
-* License : https://GenesisUI.com/license.html
--->
+<?php include 'isLogin.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,15 +8,6 @@
         <!-- Main styles for this application -->
         <link href="assets/css/style.css" rel="stylesheet">
     </head>
-    <!-- BODY options, add following classes to body to change options
-		1. 'compact-nav'     	  - Switch sidebar to minified version (width 50px)
-		2. 'sidebar-nav'		  - Navigation on the left
-			2.1. 'sidebar-off-canvas'	- Off-Canvas
-				2.1.1 'sidebar-off-canvas-push'	- Off-Canvas which move content
-				2.1.2 'sidebar-off-canvas-with-shadow'	- Add shadow to body elements
-		3. 'fixed-nav'			  - Fixed navigation
-		4. 'navbar-fixed'		  - Fixed navbar
-	-->
     <body class="navbar-fixed sidebar-nav fixed-nav">
         <header class="navbar">
             <div class="container-fluid">
@@ -30,11 +15,11 @@
                 <a class="navbar-brand" href="index"></a>
                 <ul class="nav navbar-nav pull-right hidden-md-down">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+                        <a class="nav-link" href="newArticle"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <img src="assets/img/avatars/6.jpg" class="img-avatar">
+                            <img src="assets/img/avatars/ava.png" class="img-avatar">
                             <span class="hidden-md-down">Администратор</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -43,7 +28,7 @@
                             </div>
                             <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Профиль</a>
                             <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Настройки</a>
-                            <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Выйти</a>
+                            <a class="dropdown-item" href="#" onclick="logout()"><i class="fa fa-lock"></i> Выйти</a>
                         </div>
                     </li>
                 </ul>
@@ -62,7 +47,7 @@
                                 <a class="nav-link" href="icons/font-awesome.html"><i class="icon-star"></i> Галерея</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="icons/simple-line-icons.html"><i class="icon-star"></i> Т.д. и т.п</a>
+                                <a class="nav-link" href="allComments"><i class="icon-star"></i> Отзывы</a>
                             </li>
                         </ul>
                     </li>
@@ -77,8 +62,16 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="forms.html"><i class="icon-options-vertical"></i> Меню <span class="label label-info">NEW</span></a>
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-server" aria-hidden="true"></i> Меню</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="newMenuItem"><i class="fa fa-plus-square" aria-hidden="true"></i> Добавить</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="menuItems"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Редактировать</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
@@ -113,21 +106,13 @@
         </footer>
         <!-- Bootstrap and necessary plugins -->
         <script src="assets/js/libs/jquery.min.js"></script>
-        <script src="assets/js/libs/tether.min.js"></script>
         <script src="assets/js/libs/bootstrap.min.js"></script>
         <script src="assets/js/libs/pace.min.js"></script>
         <!-- Plugins and scripts required by all views -->
-        <script src="assets/js/libs/Chart.min.js"></script>
-        <script src="assets/js/views/shared.js"></script>
         <!-- GenesisUI main scripts -->
         <script src="assets/js/app.js"></script>
         <!-- Plugins and scripts required by this views -->
         <script src="assets/js/libs/toastr.min.js"></script>
-        <script src="assets/js/libs/gauge.min.js"></script>
-        <script src="assets/js/libs/moment.min.js"></script>
-        <script src="assets/js/libs/daterangepicker.min.js"></script>
-        <!-- Custom scripts required by this view -->
-        <script src="assets/js/views/main.js"></script>
         
         
     </body>
